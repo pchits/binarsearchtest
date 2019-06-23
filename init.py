@@ -13,16 +13,20 @@ number = array[rand_key]
 
 print("We are seraching for ", number)
 
-low = 0
-high = N-1
-while low <= high:
-    mid = (low + high) // 2
-    if number < mid:
-        high = mid - 1
-    elif number > array[mid]:
-        low = mid + 1
-    else:
-        print("Key:", mid)
-        break
-else:
-    print("It's broken")
+def binarysearch(needle, haystack):
+    first = 0
+    last = len(haystack)-1
+    result = None
+    while first <= last and not result:
+        mid = (first + last)//2
+        if haystack[mid] == needle:
+            result = mid
+        else:
+            if needle < haystack[mid]:
+                last = mid - 1
+            else:
+                first = mid + 1
+    return result
+
+print(binarysearch(number, array))
+
